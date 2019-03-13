@@ -1,0 +1,119 @@
+<!-- <div class="container">
+	<div class="jumbotron">
+		<h1>LoginKaroApp</h1>
+  </div>
+  <a href="http://localhost:3000/auth/github" class="btn btn-success">Login</a>
+</div> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="welmain">
+<section class="welcome">
+<h1>
+  Welcome to Landregistry App!
+</h1>
+<!-- <div *ngIf="currentUser" class="user-info">
+  <img src="assets/images/congas/{{congaName}}.jpeg" height="100px" width="125px">
+  <h2>{{currentUser.split('#')[1]}}</h2>
+</div> -->
+</section>
+</div>
+<section *ngIf="!authenticated">
+<div class="signbtn">
+<i class="fa fa-github" style="font-size:24px"></i>
+<a href="http://localhost:3000/auth/github">Sign in with github</a>
+</div>
+</section>
+
+
+<div class="mainfrm">
+<section *ngIf="authenticated && !loggedIn">
+<h2 style="text-align:center;">Sign up</h2>
+<form (ngSubmit)="onSignUp()" #signupForm="ngForm">
+  <table>
+    <colgroup>
+      <col span="1" style="width: 11%;">
+      <col span="1" style="width: 89%;">
+    </colgroup>
+    <tr style="padding-top:2px;">
+      <td>
+        <label class="lbl">ID</label>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="signUp.id" #id="ngModel" name="id" class="txtbox">
+      </td>
+    </tr>
+    <tr style="padding-top:2px;">
+      <td>
+        <label>Name</label>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="signUp.name" #firstName="ngModel" name="name" class="txtbox">
+      </td>
+    </tr>
+    <tr style="padding-top:2px;">
+      <td>
+        <label>Address</label>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="signUp.address" #surname="ngModel" name="address" class="txtbox">
+      </td>
+    </tr>
+    <tr style="padding-top:2px;">
+      <td>
+        <label>Balance</label>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="signUp.balance" #surname="ngModel" name="balance" class="txtbox">
+      </td>
+    </tr>
+  </table>
+  <button type="submit"
+          class="primary" class="subbtn">
+    <div *ngIf="!signUpInProgress">
+      <span>Sign up</span>
+    </div>
+    <div *ngIf="signUpInProgress" class="ibm-spinner-indeterminate small loop">
+      <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+          <circle class="circle-path" cx="50" cy="50" r="20"/>
+        </svg>
+      </div>
+    </div>
+  </button>
+</form>
+</section>
+</div>
+<section *ngIf="loggedIn">
+<h2>Hi</h2>
+<!-- <table>
+  <tr *ngFor="let penguin of availablePenguins | async">
+    <td>{{penguin.name}}</td>
+    <td>{{penguin.description}}</td>
+    <td><img src="assets/images/penguins/{{penguin.name}}.JPG" height="50px" width="50px"></td>
+    <td>
+      <button type="button"
+              class="primary" (click)="buyPenguin(penguin.name)">
+        <div *ngIf="!buyInProgress || buyInProgress && penguin.name!==boughtPenguin">
+          <span>Buy</span>
+        </div>
+        <div *ngIf="buyInProgress && penguin.name===boughtPenguin" class="ibm-spinner-indeterminate small loop">
+          <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+              <circle class="circle-path" cx="50" cy="50" r="20"/>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </td>
+  </tr>
+</table>
+
+<h2>My Penguins</h2>
+<table>
+  <tr *ngFor="let penguin of myPenguins | async">
+    <td>{{penguin.name}}</td>
+    <td>{{penguin.description}}</td>
+    <td><img src="assets/images/penguins/{{penguin.name}}.JPG" height="50px" width="50px"></td>
+  </tr>
+</table> -->
+</section>

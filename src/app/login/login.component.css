@@ -1,0 +1,63 @@
+.welmain{
+    width:100%;
+    text-align: center;
+    margin-top: 10%;
+}
+
+.signbtn{
+    width:15%;
+    margin:0 auto;
+    color: black;
+    font-size: 15px;
+    background-color: white;
+    text-align: center;
+    padding:20px; 
+    border: 2px solid black;
+    border-radius: 8px;
+    margin-top: 2%;
+}
+a:link {
+    color: black;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: black;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  
+  /* selected link */
+  a:active {
+    color:black;
+  }
+.mainfrm{
+    width: 20%;
+    margin: 0 auto;
+}
+.lbl{
+    font-weight: bold;
+}
+.txtbox{
+    border: 2px solid black;
+    border-radius: 3px;
+
+}
+.subbtn{
+    margin-left: 37%;
+    background-color: black;
+    color:white;
+    font-weight: bold;
+    font-size: 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+}
+td{
+    padding: 5px;
+}
