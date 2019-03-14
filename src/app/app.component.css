@@ -142,3 +142,9 @@
     max-height: 200px;
     overflow-x: hidden;
 }
+.logutBtn{
+    margin-left: 50%;
+}
+.hdr{
+    display: flex;
+}

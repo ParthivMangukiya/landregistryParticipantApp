@@ -24,6 +24,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
+  private LOGO:string = 'svnit.png';
   title = 'app works!';
   loggedIn = false;
   authenticated = false;
