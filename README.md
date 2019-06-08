@@ -1,4 +1,18 @@
-# landregistryApp
+# landregistryParticipantApp
+
+This project is a subpart of the Land Registry Trust Management System. Please visit parent repository for more information via below link
+
+https://github.com/ParthivMangukiya/landregistryFabric.git
+
+## Pre-requisites
+
+This application communicates with a business network (https://github.com/ParthivMangukiya/landregistrybussiness.git) through Rest API. So it is required to have two rest server exposed at port 3000 and 3001
+
+1. Port 3000: This server is configured as multi-user mode. It relies on GitHub access token to log in any user.
+   
+2. Port 3001: This server is configured to sign up any user and provide new identity.
+ 
+# Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
 

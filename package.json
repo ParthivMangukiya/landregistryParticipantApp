@@ -1,9 +1,9 @@
 {
-  "name": "landregistryApp",
+  "name": "landregistryParticipantApp",
   "description": "Hyperledger Composer Angular project",
   "version": "0.0.1",
-  "author": "Jasmin Nasit",
-  "email": "jasujnasit48@gmail.com",
+  "author": "Parthiv Mangukiya",
+  "email": "parthivm20@gmail.com",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=8",
