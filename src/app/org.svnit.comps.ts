@@ -68,8 +68,26 @@ import {Event} from './org.hyperledger.composer.system';
       notary: Notary;
       newDocumentSignature: string;
    }
+
+   export class ApprovePendingLandTransactionSeller extends Transaction {
+      pendingLandTransaction: PendingLandTransaction;
+      newDocumentSignature: string;
+      approve: boolean;
+   }
+
+   export class ApprovePendingLandTransactionBuyer extends Transaction {
+      pendingLandTransaction: PendingLandTransaction;
+      newDocumentSignature: string;
+      approve: boolean;
+   }
+
+   export class GetLandHistoryForId extends Transaction {
+      landId: string;
+   }
+
    export class ApprovePendingLandTransaction extends Transaction {
       pendingLandTransaction: PendingLandTransaction;
+      newDocumentSignature: string;
       approve: boolean;
    }
    export class ContractingLoan extends Transaction {

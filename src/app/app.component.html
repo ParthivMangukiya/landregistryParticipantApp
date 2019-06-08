@@ -15,13 +15,13 @@
     <div class="container-fluid">
       <div class="navbar-header hdr">
         <p class="navbar-brand">E-Zamindar(Private Individual)</p>
-        <button class="btn btn-primary logutBtn" (click)="LogOut()">LogOut</button>
+        <button class="btn btn-primary logutBtn" (click)="LogOut()" *ngIf="loggedIn">Log Out</button>
       </div>
       <ul class="nav navbar-nav">
           <li class="dropdown active">
               <a  [routerLink]="['/Login']">Login</a>
           </li>
-        <li class="dropdown active">
+        <li class="dropdown active" *ngIf="loggedIn">
 
             <a class="dropdown-toggle" data-toggle="dropdown">Assets</a>
             <ul class="dropdown-menu scrollable-menu">
@@ -30,15 +30,15 @@
               
               <li><a [routerLink]="['/PendingLandTransaction']">PendingLandTransaction</a></li>
               
-              <li><a [routerLink]="['/Loan']">Loan</a></li>
+              <!-- <li><a [routerLink]="['/Loan']">Loan</a></li> -->
               
             </ul>
         </li>
-        <li class="dropdown active">
+        <li class="dropdown active" *ngIf="loggedIn">
             <a  [routerLink]="['/PrivateIndividual']">Account</a>
         </li>
         
-      <li class="dropdown active">
+      <!-- <li class="dropdown active">
         <a class="dropdown-toggle" data-toggle="dropdown">Transactions</a>
         <ul class="dropdown-menu scrollable-menu">
           
@@ -51,7 +51,7 @@
           <li><a [routerLink]="['/SetLandOnSale']">SetLandOnSale</a></li>
           
         </ul>
-    </li>
+    </li> -->
       </ul>
     </div>
   </nav>

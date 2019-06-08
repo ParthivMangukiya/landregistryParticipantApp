@@ -143,7 +143,11 @@
     overflow-x: hidden;
 }
 .logutBtn{
-    margin-left: 50%;
+    margin-left: 65%;
+    width:112px;
+    height: 42px;
+    font-weight: bold;
+    background-color: brown;
 }
 .hdr{
     display: flex;

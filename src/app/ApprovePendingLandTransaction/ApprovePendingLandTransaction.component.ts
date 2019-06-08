@@ -33,6 +33,7 @@ export class ApprovePendingLandTransactionComponent implements OnInit {
   private errorMessage;
 
   pendingLandTransaction = new FormControl('', Validators.required);
+  newDocumentSignature = new FormControl('', Validators.required);
   approve = new FormControl('', Validators.required);
   transactionId = new FormControl('', Validators.required);
   timestamp = new FormControl('', Validators.required);
@@ -41,6 +42,7 @@ export class ApprovePendingLandTransactionComponent implements OnInit {
   constructor(private serviceApprovePendingLandTransaction: ApprovePendingLandTransactionService, fb: FormBuilder) {
     this.myForm = fb.group({
       pendingLandTransaction: this.pendingLandTransaction,
+      newDocumentSignature: this.newDocumentSignature,
       approve: this.approve,
       transactionId: this.transactionId,
       timestamp: this.timestamp

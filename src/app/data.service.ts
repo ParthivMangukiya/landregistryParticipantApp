@@ -17,6 +17,7 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Land } from './org.svnit.comps';
 
 @Injectable()
 export class DataService<Type> {
@@ -54,6 +55,16 @@ export class DataService<Type> {
         return this.http.post(this.actionUrl + ns, asset)
           .map(this.extractData)
           .catch(this.handleError);
+    }
+
+    public addString(ns: string, asset: Type): Observable<string> {
+      console.log('Entered DataService add');
+      console.log('Add ' + ns);
+      console.log('asset', asset);
+
+      return this.http.post(this.actionUrl + ns, asset)
+        .map(this.extractData)
+        .catch(this.handleError);
     }
 
     public update(ns: string, id: string, itemToUpdate: Type): Observable<Type> {

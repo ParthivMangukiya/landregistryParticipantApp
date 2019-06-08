@@ -17,6 +17,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { LandService } from './Land.service';
 import { SetLandOnSaleService } from '../SetLandOnSale/SetLandOnSale.service';
 import { RequestLandTransactionService } from '../RequestLandTransaction/RequestLandTransaction.service';
+import { GetLandHistoryForIdService } from './GetLandHistoryForId.service';
 import 'rxjs/add/operator/toPromise';
 import { AppComponent } from 'app/app.component';
 
@@ -24,7 +25,7 @@ import { AppComponent } from 'app/app.component';
   selector: 'app-land',
   templateUrl: './Land.component.html',
   styleUrls: ['./Land.component.css'],
-  providers: [LandService,SetLandOnSaleService,RequestLandTransactionService]
+  providers: [LandService,SetLandOnSaleService,RequestLandTransactionService,GetLandHistoryForIdService]
 })
 export class LandComponent implements OnInit {
 
@@ -38,6 +39,7 @@ export class LandComponent implements OnInit {
   private errorMessage;
   private myId;
   private currentUser;
+  private historyLand;
 
   id = new FormControl('', Validators.required);
   address = new FormControl('', Validators.required);
@@ -50,15 +52,13 @@ export class LandComponent implements OnInit {
   land = new FormControl('', Validators.required);
   buyer = new FormControl('', Validators.required);
   seller = new FormControl('', Validators.required);
-  loan = new FormControl('', Validators.required);
   agent = new FormControl('', Validators.required);
   notary = new FormControl('', Validators.required);
-  newDocumentSignature = new FormControl('', Validators.required);
   transactionId = new FormControl('', Validators.required);
   timestamp = new FormControl('', Validators.required);
 
 
-  constructor(private appComponent:AppComponent,private serviceRequestLandTransaction: RequestLandTransactionService,private serviceSetLandOnSale: SetLandOnSaleService, public serviceLand: LandService, fb: FormBuilder) {
+  constructor(private appComponent:AppComponent,private getLandHistoryForId: GetLandHistoryForIdService,private serviceRequestLandTransaction: RequestLandTransactionService,private serviceSetLandOnSale: SetLandOnSaleService, public serviceLand: LandService, fb: FormBuilder) {
     this.myForm = fb.group({
       id: this.id,
       address: this.address,
@@ -73,10 +73,8 @@ export class LandComponent implements OnInit {
       land: this.land,
       buyer: this.buyer,
       seller: this.seller,
-      loan: this.loan,
       agent: this.agent,
       notary: this.notary,
-      newDocumentSignature: this.newDocumentSignature,
       transactionId: this.transactionId,
       timestamp: this.timestamp
     });
@@ -311,6 +309,10 @@ export class LandComponent implements OnInit {
     return state1=="notOnSale" && owner.split(':')[1] == this.currentUser;
   }
   
+  enableButtonNotOnSell(owner:any,state1:any): boolean{
+    return state1=="onSale" && owner.split(':')[1] == this.currentUser;
+  }
+
   enableButtonBuy(owner:any,state1:any): boolean{
     return state1=="onSale" && owner.split(':')[1] != this.currentUser;
   }
@@ -354,10 +356,8 @@ export class LandComponent implements OnInit {
       'land': landId,
       'buyer': this.myId,
       'seller': sellerId.split('#')[1],
-      'loan': null,
       'agent': null,
       'notary': null,
-      'newDocumentSignature': null,
       'transactionId': null,
       'timestamp': null
     });
@@ -369,10 +369,8 @@ export class LandComponent implements OnInit {
       'land': 'resource:org.svnit.comps.Land#'+this.land.value,
       'buyer': 'resource:org.svnit.comps.PrivateIndividual#'+this.buyer.value,
       'seller': 'resource:org.svnit.comps.PrivateIndividual#'+this.seller.value,
-      'loan': 'resource:org.svnit.comps.Loan#'+this.loan.value,
       'agent': 'resource:org.svnit.comps.Agent#'+this.agent.value,
       'notary': 'resource:org.svnit.comps.Notary#'+this.notary.value,
-      'newDocumentSignature': this.newDocumentSignature.value,
       'transactionId': this.transactionId.value,
       'timestamp': this.timestamp.value
     };
@@ -381,10 +379,8 @@ export class LandComponent implements OnInit {
       'land': null,
       'buyer': null,
       'seller': null,
-      'loan': null,
       'agent': null,
       'notary': null,
-      'newDocumentSignature': null,
       'transactionId': null,
       'timestamp': null
     });
@@ -397,10 +393,8 @@ export class LandComponent implements OnInit {
         'land': null,
         'buyer': null,
         'seller': null,
-        'loan': null,
         'agent': null,
         'notary': null,
-        'newDocumentSignature': null,
         'transactionId': null,
         'timestamp': null
       });
@@ -413,6 +407,44 @@ export class LandComponent implements OnInit {
         this.errorMessage = error;
       }
     });
+  }
+
+
+  addTransactionGetLandHistoryForId(id: any): Promise<any> {
+    this.Transaction = {
+      $class: 'org.svnit.comps.getLandHistoryForId',
+      'landId': id,
+      'transactionId': this.transactionId.value,
+      'timestamp': this.timestamp.value
+    };
+
+    return this.getLandHistoryForId.addTransaction(this.Transaction)
+    .toPromise()
+    .then((res) => {
+      const tempList = [];
+      this.errorMessage = null
+      var result=[];
+      result=JSON.parse(res);
+
+      result.forEach(asset => {
+        asset.owner = asset.owner.split('#')[1];
+        tempList.push(asset);
+      });
+      this.historyLand = tempList;
+      console.log('@debug ',result);      
+    })
+    .catch((error) => {
+      if (error === 'Server error') {
+        this.errorMessage = 'Could not connect to REST server. Please check your configuration details';
+      } else {
+        this.errorMessage = error;
+      }
+    });
+  }
+
+
+  closeHistory(): any {
+    this.historyLand = [];
   }
 
 }

@@ -26,9 +26,10 @@
     letter-spacing: 0;
     line-height: 10px;
     height: 40px;
-    width: 153px;
-    float: right;
-    margin-top: 5%;
+    width: 100px;
+    margin-top: 1%;
+    margin-right: 3%;
+    margin-left: 3%;
 }
 
 .table > thead > tr > th {
@@ -36,7 +37,9 @@
 }
 
 .table > thead > tr > th.info {
-    background: #FFF;
+    background:black;
+    text-align: center;
+    color: white;
 }
 .modal-title {
     font-family: inherit;
@@ -80,9 +83,18 @@
 label {
     color: #545454;
 }
+.modal-content1{
+    margin-top: 15%;
+    margin-bottom: 15%;
+    width: max-content;
+    box-shadow: 0 0px 0px;
+    border: 0px;
+
+}
 .modal-content{
     margin-top: 15%;
     margin-bottom: 15%;
+    width: max-content;
     box-shadow: 0 0px 0px;
     border: 0px;
 
@@ -154,7 +166,7 @@ label {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 250px;
+    text-align: center;
 }
 .plus-svg{
     color: #fff;

@@ -60,9 +60,7 @@ export class AppComponent implements AfterViewInit {
     this.loggedIn=false;
     this.authenticated=false;
     this.currentUser='';
-    this.cookieService.delete('loggedIn');
-    this.cookieService.delete('authenticated');
-    this.cookieService.delete('currentUser');
-    this.router.navigate(['/Login']);
+    this.cookieService.deleteAll();
+    this.router.navigate(['']);
   }
 }

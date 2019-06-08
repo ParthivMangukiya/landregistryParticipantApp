@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           this.appComponent.loggedIn = true;
           return this.getCurrentUser()
             .then(() => {
-              
+              this.router.navigate(['']);
             });
         }
       });
@@ -92,6 +92,7 @@ export class LoginComponent implements OnInit {
         this.cookieService.set('loggedIn','true');
         this.loggedIn = true;
         this.signUpInProgress = false;
+        this.router.navigate(['']);
       });
   }
 
@@ -104,40 +105,6 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  // setupDemo(): Promise<any> {
-  //   return this.restService.setupDemo().then(() => {
-  //     this.getAvailablePenguins();
-  //   });
-  // }
 
-  // getAvailablePenguins() {
-  //   this.availablePenguins = this.restService.getAvailablePenguins();
-  // }
-
-  // getMyPenguins() {
-  //   this.myPenguins = this.restService.getMyPenguins();
-  // }
-
-  // buyPenguin(penguinId) {
-  //   this.buyInProgress = true;
-  //   this.boughtPenguin = penguinId;
-  //   return this.restService.buyPenguin(penguinId, this.currentUser)
-  //     .then(() => {
-  //       return this.getAvailablePenguins();
-  //     })
-  //     .then(() => {
-  //       return this.getMyPenguins();
-  //     })
-  //     .then(() => {
-  //       this.boughtPenguin = null;
-  //       this.buyInProgress = false;
-  //     });
-  // }
-
-  // private getRandomIntInclusive(min, max) {
-  //   min = Math.ceil(min);
-  //   max = Math.floor(max);
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // }
 
 }

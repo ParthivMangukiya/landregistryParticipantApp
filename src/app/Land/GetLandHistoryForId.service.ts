@@ -15,36 +15,23 @@
 import { Injectable } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs/Observable';
-import { Loan } from '../org.svnit.comps';
+import { GetLandHistoryForId } from '../org.svnit.comps';
+import { Land } from '../org.svnit.comps';
 import 'rxjs/Rx';
 
 // Can be injected into a constructor
 @Injectable()
-export class LoanService {
+export class GetLandHistoryForIdService {
 
-  private NAMESPACE = 'Loan';
+  private NAMESPACE = 'getLandHistoryForId';
 
-  constructor(private dataService: DataService<Loan>) {
+  constructor(private dataService: DataService<GetLandHistoryForId>) {
   };
 
-  public getAll(): Observable<Loan[]> {
-    return this.dataService.getAll(this.NAMESPACE);
+  public addTransaction(itemToAdd: any): Observable<string> {
+    return this.dataService.addString(this.NAMESPACE, itemToAdd);
   }
 
-  public getAsset(id: any): Observable<Loan> {
-    return this.dataService.getSingle(this.NAMESPACE, id);
-  }
-
-  public addAsset(itemToAdd: any): Observable<Loan> {
-    return this.dataService.add(this.NAMESPACE, itemToAdd);
-  }
-
-  public updateAsset(id: any, itemToUpdate: any): Observable<Loan> {
-    return this.dataService.update(this.NAMESPACE, id, itemToUpdate);
-  }
-
-  public deleteAsset(id: any): Observable<Loan> {
-    return this.dataService.delete(this.NAMESPACE, id);
-  }
 
 }
+
